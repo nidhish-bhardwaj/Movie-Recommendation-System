@@ -9,9 +9,12 @@ from scipy.sparse import load_npz
 
 load_dotenv()
 
-TMDB_API_KEY = os.getenv("TMDB_API_KEY")
-TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
+try:
+    TMDB_API_KEY = st.secrets["TMDB_API_KEY"]
+except Exception:
+    TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
+TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
 # ---------------- PAGE CONFIGURATION ----------------
 
 st.set_page_config(
