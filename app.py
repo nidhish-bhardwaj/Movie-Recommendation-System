@@ -5,6 +5,7 @@ import os
 import requests
 
 from dotenv import load_dotenv
+from scipy.sparse import load_npz
 
 load_dotenv()
 
@@ -88,8 +89,7 @@ def load_model():
     with open("model/new_df.pkl", "rb") as f:
         new_df = pickle.load(f)
 
-    with open("model/similarity.pkl", "rb") as f:
-        similarity = pickle.load(f)
+    similarity = load_npz("model/similarity.npz")
 
     return new_df, similarity
 
